@@ -1,0 +1,20 @@
+.mat-form-field {
+  margin-right: 30px;
+  width: 250px !important;
+}
+.input-search {
+  width: 300px;
+  .mat-form-field-flex {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+
+table {
+  width: -webkit-fill-available;
+  margin: 20px 0;
+}

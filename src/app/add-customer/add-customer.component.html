@@ -1,0 +1,187 @@
+<div>
+  <div class="add-title">
+    <h2 class="header-modal">Crear medidor</h2>
+  </div>
+  <div>
+    <form [formGroup]="addCusForm" (change)="formChanged()">
+
+      <mat-grid-list cols="1" class="grilla" >
+        <!-- Empresa -->
+        <mat-form-field >
+          <mat-label>Empresa</mat-label>
+          <mat-select [(value)]="empresa">
+            <mat-option>None</mat-option>
+            <mat-option value="empresa1">Empresa 1</mat-option>
+            <mat-option value="empresa2">Empresa 2</mat-option>
+            <mat-option value="empresa3">Empresa 3</mat-option>
+            <mat-option value="empresa4">Empresa 4</mat-option>
+            <mat-option value="empresa5">Empresa 5</mat-option>
+            <mat-option value="empresa6">Empresa 6</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" class="grilla" >
+        <!-- Código -->
+        <mat-form-field>
+          <input matInput placeholder="Código" value={{codigo}}>
+        </mat-form-field>
+        <!-- Nombre -->
+        <mat-form-field>
+          <input matInput placeholder="Nombre" value={{nombre}}>
+        </mat-form-field>
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" class="grilla" >
+        <div class="row">
+          <!-- Descripcion -->
+          <mat-form-field>
+            <mat-label>Mínimo volumen de flujo</mat-label>
+            <input matInput  value={{descripcion}}>
+          </mat-form-field>
+          <!-- Tipo de sistemas de medición -->
+          <mat-form-field >
+            <mat-label>Tipo de sistemas de medición</mat-label>
+            <mat-select [(value)]="tipo_medicion">
+              <mat-option>None</mat-option>
+              <mat-option value="tipo1">Tipo 1</mat-option>
+              <mat-option value="tipo2">Tipo 2</mat-option>
+              <mat-option value="tipo3">Tipo 3</mat-option>
+              <mat-option value="tipo4">Tipo 4</mat-option>
+              <mat-option value="tipo5">Tipo 5</mat-option>
+              <mat-option value="tipo6">Tipo 6</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" class="grilla" >
+        <!-- Mínimo volumen de flujo -->
+        <mat-form-field>
+          <mat-label>Mínimo volumen de flujo</mat-label>
+          <input matInput type="number" value={{minimo_volumen_flujo}}>
+        </mat-form-field>
+        <!-- Máximo volumen de flujo -->
+        <mat-form-field>
+          <mat-label>Máximo volumen de flujo</mat-label>
+          <input matInput type="number" value={{maximo_volumen_flujo}}>
+        </mat-form-field>
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" class="grilla" >
+        <mat-form-field >
+          <mat-label>Unidad sistemas de medición</mat-label>
+          <mat-select [(value)]="unidad_medida">
+            <mat-option>None</mat-option>
+            <mat-option value="medida1">Medida 1</mat-option>
+            <mat-option value="medida2">Medida 2</mat-option>
+            <mat-option value="medida3">Medida 3</mat-option>
+            <mat-option value="medida4">Medida 4</mat-option>
+            <mat-option value="medida5">Medida 5</mat-option>
+            <mat-option value="medida6">Medida 6</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <!-- Tipo de medidor -->
+        <mat-form-field >
+          <mat-label>Tipo de medidor</mat-label>
+          <mat-select [(value)]="tipo_medidor">
+            <mat-option>None</mat-option>
+            <mat-option value="medidor1">Medidor 1</mat-option>
+            <mat-option value="medidor2">Medidor 2</mat-option>
+            <mat-option value="medidor3">Medidor 3</mat-option>
+            <mat-option value="medidor4">Medidor 4</mat-option>
+            <mat-option value="medidor5">Medidor 5</mat-option>
+            <mat-option value="medidor6">Medidor 6</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+       </mat-grid-list>
+
+      <mat-grid-list cols="3" class="grilla" >
+        <!-- Código instantaneo -->
+        <mat-form-field>
+          <mat-label>Código instantaneo</mat-label>
+          <input matInput value={{codigo_instantaneo}}>
+        </mat-form-field>
+        <!-- Código Diario/horario -->
+        <mat-form-field>
+          <mat-label>Código Diario/horario</mat-label>
+          <input matInput value={{codigo_diario_horario}}>
+        </mat-form-field>
+        <!-- Orden -->
+        <mat-form-field>
+          <mat-label>Orden</mat-label>
+          <input matInput min="1" type="number" value={{orden}}>
+        </mat-form-field>
+      </mat-grid-list>
+
+
+      <ngx-datatable
+  class="material"
+  [rows]="data_copy"
+  class="material"
+  [loadingIndicator]="loadingIndicator"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [columns]="columns"
+  [reorderable]="reorderable">
+
+    <ngx-datatable-column name="Acciones" [width]="170"  [sortable]="false" [frozenLeft]="true">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        <span>
+          <button mat-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Empresa" prop="empresa" [width]="150">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        {{row.empresa}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Codigo" prop="codigo" [width]="150">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        {{row.codigo}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Nombre" prop="nombre" [width]="150">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        {{row.nombre}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Unidad medida" prop="unidad_medida" [width]="150">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        {{row.unidad_medida}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Tipo de medidor" prop="tipo_medidor" [width]="150">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        {{row.tipo_medidor}}
+      </ng-template>
+    </ngx-datatable-column>
+
+  </ngx-datatable>
+
+
+      <div  mat-dialog-actions class="btn-sec">
+        <button mat-raised-button  type="submit" color="primary" class="Update-btn" (click)="valueChanged()">Save</button>
+        <button mat-raised-button [mat-dialog-close]="datos_empresa" type="button" class="Discard-btn" (click)="cerrarPopup()">Cancel</button>
+      </div>
+
+    </form>
+  </div>
+</div>

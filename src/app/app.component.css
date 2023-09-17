@@ -1,0 +1,40 @@
+mat-grid-list.mat-grid-list.grilla {
+  margin: 30px;
+}
+
+.mat-form-field {
+  margin-right: 30px;
+}
+.input-search {
+  width: 300px;
+  .mat-form-field-flex {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+
+table {
+  width: 95%;
+  margin: 30px;
+}
+
+th.mat-header-cell.cdk-header-cell.cdk-column-acciones.mat-column-acciones.ng-star-inserted {
+  width: 200px;
+}
+
+ngx-datatable.ngx-datatable.material.fixed-header.virtualized {
+  width: 95%;
+  margin: 30px;
+}
+
+.boton-buscar {
+  padding: 10px;
+  background-color: rgb(218, 221, 223);
+  margin-left: 100px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
